@@ -227,13 +227,12 @@
   .predict b{display:block;color:#5a3a00;font-size:1.05em;}
 
   /* ---- hand ---- */
-  .hand-area{margin-top:10px;}
+  .hand-area{margin-top:8px;}
   .hand{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-width:520px;margin:0 auto;}
   .hand .cardslot{cursor:pointer;transition:transform .1s ease;}
   .hand .cardslot:hover{transform:translateY(-5px);}
   .hand .cardslot.used{opacity:.22;cursor:default;transform:none;}
 
-  .status{text-align:center;font-size:.8rem;color:#ddf3e4;min-height:1.3em;margin:8px 0 0;}
   .reasons{
     background:rgba(3,40,20,.5);border:1px solid rgba(255,255,255,.14);
     border-radius:10px;padding:8px 11px;margin-top:9px;
@@ -326,8 +325,6 @@
       <div class="rail you" id="rail-you"></div>
     </div>
 
-    <div class="status" id="status"></div>
-
     <div class="hand-area" id="hand-area">
       <div id="hand" class="hand"></div>
     </div>
@@ -352,8 +349,8 @@
       <tr><th>カード</th><th>強さ</th></tr>
       <tr><td>0 病原菌 <span style="color:#a8c4b2">Germs</span></td><td>偵察兵以外の全カードと引き分け。偵察兵には負ける。</td></tr>
       <tr><td>1 偵察兵 <span style="color:#a8c4b2">Scout</span></td><td>病原菌には勝つが、2〜4の兵士には負ける。</td></tr>
-      <tr><td>2 コマンドー <span style="color:#a8c4b2">Commandos</span></td><td rowspan="3">数字が大きい方が勝ち。同数は引き分け。</td></tr>
-      <tr><td>3 騎兵隊 <span style="color:#a8c4b2">Cavalry</span></td></tr>
+      <tr><td>2 歩兵隊 <span style="color:#a8c4b2">Infantry</span></td><td rowspan="3">数字が大きい方が勝ち。同数は引き分け。</td></tr>
+      <tr><td>3 機銃兵 <span style="color:#a8c4b2">Gunners</span></td></tr>
       <tr><td>4 大隊 <span style="color:#a8c4b2">Battalion</span></td></tr>
     </table>
     <p>
@@ -391,12 +388,12 @@
     return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); };
 
   /* ================= カード定義 ================= */
-  // 原作のカード名（Germs / Scout / Commandos / Cavalry / Battalion）に合わせる
+  // カード名は絵に合わせる。カード上で折り返さないよう3文字まで
   var CARDS = {
     0:{ label:'0', jp:'病原菌',     en:'Germs',     cls:'germ',  image:'images/card-germ.png' },
     1:{ label:'1', jp:'偵察兵',     en:'Scout',     cls:'scout', image:'images/card-scout.png' },
-    2:{ label:'2', jp:'コマンドー', en:'Commandos', cls:'',      image:'images/card-soldier2.png' },
-    3:{ label:'3', jp:'騎兵隊',     en:'Cavalry',   cls:'',      image:'images/card-soldier3.png' },
+    2:{ label:'2', jp:'歩兵隊',     en:'Infantry',  cls:'',      image:'images/card-soldier2.png' },
+    3:{ label:'3', jp:'機銃兵',     en:'Gunners',   cls:'',      image:'images/card-soldier3.png' },
     4:{ label:'4', jp:'大隊',       en:'Battalion', cls:'',      image:'images/card-soldier4.png' }
   };
   var MINE_VALUES = [1,2,3,4,5];
@@ -511,7 +508,7 @@
       } else if (rng() < 0.35 + p.aggr * 0.6){
         take(top, 4, '一番おいしい山を大隊で正面から取りに来ている。');
       } else {
-        take(top, 3, '一番おいしい山へは騎兵隊。大隊は別の山に回している。');
+        take(top, 3, '一番おいしい山へは機銃兵。大隊は別の山に回している。');
       }
     }
 
@@ -807,13 +804,7 @@
     $('btn-confirm').disabled = !(assigning && placed === need);
     $('btn-next').hidden = !(state.phase === 'round-end' && state.round < MAX_ROUNDS);
     $('btn-result').hidden = !(state.phase === 'round-end' && state.round >= MAX_ROUNDS);
-
-    if (assigning){
-      setStatus('手札をクリックして、5つの鉱山すべてに1枚ずつ（' + placed + '/' + need + '）');
-    }
   }
-
-  function setStatus(t){ $('status').textContent = t; }
 
   function renderAll(){
     if (!state) return;
@@ -856,7 +847,6 @@
     cpuDecide();
     state.phase = 'reveal';
     state.revealIndex = 0;
-    setStatus(state.persona.name + 'の札をめくります…');
     renderAll();
     revealNext();
   });
@@ -907,7 +897,6 @@
     }
     state.phase = 'round-end';
     renderBoard();
-    setStatus(state.round >= MAX_ROUNDS ? '全3ラウンド終了。' : 'ラウンド ' + state.round + ' 終了。');
     renderButtons();
     renderReasons();
   }

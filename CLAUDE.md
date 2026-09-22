@@ -33,7 +33,8 @@ reach-on-sanma が 基準です。
 ## アプリ（`/app/`）
 
 - 卓（緑のラシャ）の上に、上段＝相手の札・中段＝鉱山カード・下段＝自分の札を 並べる
-- 原作の カード名（Germs / Scout / Commandos / Cavalry / Battalion）に そろえる
+- カード名は 絵に 合わせる（病原菌 Germs / 偵察兵 Scout / 歩兵隊 Infantry /
+  機銃兵 Gunners / 大隊 Battalion）。カード上で 折り返さない 長さ（3文字まで）にする
 - 画像は 読みこめた ときだけ 使い、だめなら 数字だけで 遊べるようにする
 - ゲーム画面には 原作クレジットや 紹介文を 出さない（紹介ページの 役目）
 - 対戦相手は all-in-texas の `PERSONAS` と 同じ5人。`tight` / `aggr` / `bluff` の 値も そろえる
