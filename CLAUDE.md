@@ -38,7 +38,7 @@ reach-on-sanma が 基準です。
 - 画像は 読みこめた ときだけ 使い、だめなら 数字だけで 遊べるようにする
 - ゲーム画面には 原作クレジットや 紹介文を 出さない（紹介ページの 役目）
 - 対戦相手は all-in-texas の `PERSONAS` と 同じ5人。`tight` / `aggr` / `bluff` の 値も そろえる
-- アイコンは `tools/make_icons.py` が 鉱山カードの 絵柄から つくる
+- アイコンは `tools/make_icons.py` が 元絵 `assets/icon-src.jpg`（Gemini で描いた 山とダイヤ）から つくる
 
 ## 検索エンジン向け（共通）
 
