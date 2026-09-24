@@ -329,3 +329,7 @@ details p { margin-top: 12px; font-size: 15px; padding-left: 24px; }
   font-size: 12px;
   box-shadow: 0 2px 0 #a87c16;
 }
+
+/* 紹介ページのバナー（Gemini で描いたイラスト） */
+.art-banner { background: #1e1a24; }
+.art-banner img { display: block; width: 100%; max-width: 1376px; height: auto; margin: 0 auto; }

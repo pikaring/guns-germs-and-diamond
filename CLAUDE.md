@@ -17,7 +17,7 @@ reach-on-sanma が 基準です。
 | アソシエイトの 表示 | フッターに `<span class="disclosure">…</span>` |
 | 原作の クレジット | フッターに 1行（鷹巣堂のアナログゲームが 原作。ゲーム画面には 出さない） |
 | フッター | `GitHub` / `README` / `MIT License · pikaring · 依存ライブラリなし` |
-| OG | `og:title` / `og:description` / `og:url` / `og:image`（`assets/icon.png`） |
+| OG | `og:title` / `og:description` / `og:url` / `og:image`（`assets/og.jpg`、1200×630。元絵は `assets/hero.jpg`） |
 
 ## 本・グッズ（Amazonアソシエイト）
 
