@@ -21,7 +21,8 @@
 | `app/images/card-*.png` | カードの絵5種（病原菌・偵察兵・歩兵隊・機銃兵・大隊） |
 | `app/images/icon-*.png` / `app/manifest.json` | ホーム画面に追加したときの設定（PWA） |
 | `tools/make_cards.py` | 画像生成AIのグリッド画像を、カードの絵に切り分ける |
-| `tools/make_icons.py` | アイコンの元絵（`assets/icon-src.jpg`、Gemini で描いた山とダイヤ）から角を丸めたアイコン一式をつくる |
+| `assets/logo.png` | タイトルロゴ（背景を抜いた PNG。シャレード三部作で書体・配置をそろえたもの） |
+| `tools/make_icons.py` | タイトルロゴの紋章（上）と題名（下）を組みなおして、角を丸めたアイコン一式をつくる（64px 以下は紋章だけ。三部作で同じ図がら） |
 | `tools/fetch_goods.py` | 紹介ページの本の画像と価格を Amazon Creators API で取り直す |
 | `.github/workflows/goods.yml` | 上を毎日3時（JST）に実行して `assets/goods.json` を更新する |
 | `docs/asset-prompts.md` | カードの絵を画像生成AIで作るときのプロンプト |
